@@ -42,7 +42,7 @@ public class AutorEntity {
     @Column(name = "cpf", unique = true, length = 14)
     private String cpf;
 
-    @OneToMany(mappedBy = "autorEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany(mappedBy = "autores")
     private List<ObraEntity> obras;
 
 
