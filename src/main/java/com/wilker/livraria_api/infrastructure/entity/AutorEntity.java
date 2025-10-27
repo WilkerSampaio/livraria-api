@@ -43,7 +43,7 @@ public class AutorEntity {
     private String cpf;
 
     @OneToMany(mappedBy = "autorEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<ObraEntity> obras;
+    private List<ObraEntity> obras;
 
 
 

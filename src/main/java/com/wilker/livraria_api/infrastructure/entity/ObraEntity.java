@@ -24,7 +24,7 @@ public class ObraEntity {
     @Column(name = "descricao", length = 240)
     private String descricao;
 
-    @Column(name = "dataPulicacao")
+    @Column(name = "dataPublicacao")
     private LocalDate dataPulicacao;
 
     @OneToOne

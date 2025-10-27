@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ObraRepository extends JpaRepository<Long, ObraEntity> {
+public interface ObraRepository extends JpaRepository<ObraEntity, Long> {
 
     Optional<ObraEntity> findById(Long id);
 }
