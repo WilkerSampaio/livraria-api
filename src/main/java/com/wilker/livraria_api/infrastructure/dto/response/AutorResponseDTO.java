@@ -1,0 +1,21 @@
+package com.wilker.livraria_api.infrastructure.dto.response;
+
+import com.wilker.livraria_api.infrastructure.entity.ObraEntity;
+import com.wilker.livraria_api.infrastructure.enums.SexoEnum;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public record AutorResponseDTO (
+
+        Long id,
+        String nome,
+        SexoEnum sexoEnum,
+        String email,
+        LocalDate dataNascimento,
+        String paisOrigem,
+        String cpf,
+        List<ObraEntity> obras
+
+){
+}
