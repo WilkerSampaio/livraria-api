@@ -1,4 +1,4 @@
-package com.wilker.livraria_api.infrastructure.entity.repository;
+package com.wilker.livraria_api.infrastructure.repository;
 
 import com.wilker.livraria_api.infrastructure.entity.AutorEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
