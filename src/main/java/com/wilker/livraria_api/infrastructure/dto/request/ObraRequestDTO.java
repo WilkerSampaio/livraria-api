@@ -1,6 +1,6 @@
 package com.wilker.livraria_api.infrastructure.dto.request;
 
-import com.wilker.livraria_api.infrastructure.entity.AutorEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,8 +9,9 @@ public record ObraRequestDTO(
 
         String nome,
         String descricao,
-        LocalDate dataPulicacao,
-        List<AutorEntity> autores
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+        LocalDate dataPublicacao,
+        List<AutorRequestDTO> autores
 
 ) {
 }
