@@ -26,7 +26,7 @@ public class ObraEntity {
     private String descricao;
 
     @Column(name = "dataPublicacao")
-    private LocalDate dataPulicacao;
+    private LocalDate dataPublicacao;
 
     @ManyToMany
     @JoinTable(name = "autor_obra", joinColumns = @JoinColumn(name = "obra_id"),
