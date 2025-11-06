@@ -29,5 +29,12 @@ public class AutorService {
         return autorMapperConverter.paraAutorResponse(autorRepository.save(autorEntity));
     }
 
+    public AutorResponseDTO buscaDadosAutor(Long id){
+        AutorEntity autorEntity = autorRepository.findById(id).orElseThrow(()->
+                new RuntimeException("Autor não encontrado"));
+
+        return autorMapperConverter.paraAutorResponse(autorEntity);
+    }
+
 
 }
