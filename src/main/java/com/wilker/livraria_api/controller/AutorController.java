@@ -16,13 +16,19 @@ public class AutorController {
     private final AutorService autorService;
 
     @PostMapping
-    public ResponseEntity<AutorResponseDTO> registraAutor(@RequestBody AutorRequestDTO autorRequestDTO){
-        return ResponseEntity.ok(autorService.criaAutor(autorRequestDTO));
+    public ResponseEntity<AutorResponseDTO> registrarDadosAutor(@RequestBody AutorRequestDTO autorRequestDTO){
+        return ResponseEntity.ok(autorService.RegistraAutor(autorRequestDTO));
     }
 
     @GetMapping
-    public ResponseEntity<AutorResponseDTO> buscaAutor(@RequestParam ("id") Long id){
-        return ResponseEntity.ok(autorService.buscaDadosAutor(id));
+    public ResponseEntity<AutorResponseDTO> buscarDadosAutor(@RequestParam ("id") Long id){
+        return ResponseEntity.ok(autorService.buscaAutor(id));
+    }
+
+    @PutMapping
+    public ResponseEntity<AutorResponseDTO> atualizarDadosAutor(@RequestBody AutorRequestDTO autorRequestDTO,
+                                                          @RequestParam ("id") Long id){
+        return ResponseEntity.ok(autorService.atualizaAutor(autorRequestDTO, id));
     }
 
 }
