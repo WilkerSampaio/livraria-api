@@ -31,4 +31,10 @@ public class AutorController {
         return ResponseEntity.ok(autorService.atualizaAutor(autorRequestDTO, id));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarAutor(@PathVariable Long id){
+        autorService.deletaAutor(id);
+        return ResponseEntity.ok().build();
+    }
+
 }

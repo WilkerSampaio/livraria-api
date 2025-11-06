@@ -46,4 +46,8 @@ public class AutorService {
         return autorMapperConverter.paraAutorResponse(autorRepository.save(autorEntity));
     }
 
+    public void deletaAutor(Long id){
+        autorRepository.deleteById(id);
+    }
+
 }
