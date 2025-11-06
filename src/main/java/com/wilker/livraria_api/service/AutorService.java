@@ -4,9 +4,11 @@ import com.wilker.livraria_api.infrastructure.dto.request.AutorRequestDTO;
 import com.wilker.livraria_api.infrastructure.dto.response.AutorResponseDTO;
 import com.wilker.livraria_api.infrastructure.entity.AutorEntity;
 import com.wilker.livraria_api.infrastructure.mapper.AutorMapperConverter;
+import com.wilker.livraria_api.infrastructure.mapper.AutorMapperUpdate;
 import com.wilker.livraria_api.infrastructure.repository.AutorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 
 @Service
 @RequiredArgsConstructor
@@ -14,8 +16,8 @@ public class AutorService {
 
     private final AutorRepository autorRepository;
     private final AutorMapperConverter autorMapperConverter;
-
-    public AutorResponseDTO criaAutor(AutorRequestDTO autorRequestDTO){
+    private final AutorMapperUpdate autorMapperUpdate;
+    public AutorResponseDTO RegistraAutor(AutorRequestDTO autorRequestDTO){
 
         AutorEntity autorEntity = new AutorEntity();
 
@@ -29,12 +31,19 @@ public class AutorService {
         return autorMapperConverter.paraAutorResponse(autorRepository.save(autorEntity));
     }
 
-    public AutorResponseDTO buscaDadosAutor(Long id){
-        AutorEntity autorEntity = autorRepository.findById(id).orElseThrow(()->
-                new RuntimeException("Autor não encontrado"));
+    public AutorResponseDTO buscaAutor(Long id){
+        AutorEntity autorEntity = autorRepository.findById(id).orElseThrow(()
+                -> new RuntimeException("Autor não encontrado"));
 
         return autorMapperConverter.paraAutorResponse(autorEntity);
     }
+    public AutorResponseDTO atualizaAutor(AutorRequestDTO autorRequestDTO, Long id){
+        AutorEntity autorEntity = autorRepository.findById(id).orElseThrow(()
+                -> new ResourceAccessException("Autor não encontrado"));
 
+         autorMapperUpdate.updateAutor(autorRequestDTO, autorEntity);
+
+        return autorMapperConverter.paraAutorResponse(autorRepository.save(autorEntity));
+    }
 
 }
