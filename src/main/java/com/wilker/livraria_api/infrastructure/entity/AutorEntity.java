@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -43,7 +43,7 @@ public class AutorEntity {
     private String cpf;
 
     @ManyToMany(mappedBy = "autores")
-    private List<ObraEntity> obras;
+    private Set<ObraEntity> obras;
 
 
 

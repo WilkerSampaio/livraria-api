@@ -6,11 +6,14 @@ import com.wilker.livraria_api.infrastructure.entity.AutorEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+
+@Mapper(componentModel = "spring", uses = {ObraMapperConverter.class})
 public interface AutorMapperConverter {
 
-    @Mapping(target = "id", ignore = true)
-    AutorEntity paraAutorEntity(AutorRequestDTO autorRequestDTO);
-    AutorResponseDTO paraAutorResponse(AutorEntity autorEntity);
 
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "obras", ignore = true)
+    AutorEntity paraAutorEntity(AutorRequestDTO autorRequestDTO);
+
+    AutorResponseDTO paraAutorResponse(AutorEntity autorEntity);
 }

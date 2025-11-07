@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -31,6 +32,6 @@ public class ObraEntity {
     @ManyToMany
     @JoinTable(name = "autor_obra", joinColumns = @JoinColumn(name = "obra_id"),
             inverseJoinColumns = @JoinColumn(name = "autor_id"))
-    private List<AutorEntity> autores;
+    private Set<AutorEntity> autores;
 
 }
