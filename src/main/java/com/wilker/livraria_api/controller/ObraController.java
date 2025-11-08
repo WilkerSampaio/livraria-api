@@ -22,7 +22,13 @@ public class ObraController {
 
     @GetMapping
     public ResponseEntity<ObraResponseDTO> buscarDadosObra (@RequestParam ("id") Long id){
-        return ResponseEntity.ok(obraService.buscarDadosObra(id));
+        return ResponseEntity.ok(obraService.buscaObra(id));
+    }
+
+    @PutMapping
+    public ResponseEntity<ObraResponseDTO> atualizarDadosObra(@RequestBody ObraRequestDTO obraRequestDTO,
+                                                              @RequestParam("id") Long id){
+        return ResponseEntity.ok(obraService.atualizaObra(obraRequestDTO,id));
     }
 
 }

@@ -17,7 +17,7 @@ public class AutorService {
     private final AutorRepository autorRepository;
     private final AutorMapperConverter autorMapperConverter;
     private final AutorMapperUpdate autorMapperUpdate;
-    public AutorResponseDTO RegistraAutor(AutorRequestDTO autorRequestDTO){
+    public AutorResponseDTO registraAutor(AutorRequestDTO autorRequestDTO){
 
         AutorEntity autorEntity = new AutorEntity();
 

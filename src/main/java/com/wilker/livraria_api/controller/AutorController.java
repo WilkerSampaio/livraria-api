@@ -17,7 +17,7 @@ public class AutorController {
 
     @PostMapping
     public ResponseEntity<AutorResponseDTO> registrarDadosAutor(@RequestBody AutorRequestDTO autorRequestDTO){
-        return ResponseEntity.ok(autorService.RegistraAutor(autorRequestDTO));
+        return ResponseEntity.ok(autorService.registraAutor(autorRequestDTO));
     }
 
     @GetMapping
