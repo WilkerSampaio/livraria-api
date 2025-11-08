@@ -12,7 +12,6 @@ public interface AutorMapperConverter {
 
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "obras", ignore = true)
     AutorEntity paraAutorEntity(AutorRequestDTO autorRequestDTO);
 
     AutorResponseDTO paraAutorResponse(AutorEntity autorEntity);
