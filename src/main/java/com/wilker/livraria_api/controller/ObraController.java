@@ -31,4 +31,10 @@ public class ObraController {
         return ResponseEntity.ok(obraService.atualizaObra(obraRequestDTO,id));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarDadosObra(@PathVariable Long id){
+        obraService.deletaObra(id);
+        return ResponseEntity.ok().build();
+    }
+
 }
