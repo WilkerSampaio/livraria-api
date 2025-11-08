@@ -88,4 +88,8 @@ public class ObraService {
 
     }
 
+    public void deletaObra(Long id){
+        obraRepository.deleteById(id);
+    }
+
 }
