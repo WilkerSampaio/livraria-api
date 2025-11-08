@@ -50,5 +50,13 @@ public class ObraService {
         return obraMapperConverter.paraObraResponseDTO(obraRepository.save(obraEntity));
     }
 
+    public ObraResponseDTO buscarDadosObra(Long id){
+        ObraEntity obraEntity = obraRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Nenhuma obra encontrada com o id: " + id));
+
+        return obraMapperConverter.paraObraResponseDTO(obraEntity);
+
+    }
+
 
 }

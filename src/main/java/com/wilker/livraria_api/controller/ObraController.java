@@ -6,10 +6,7 @@ import com.wilker.livraria_api.service.ObraService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/obra")
@@ -23,6 +20,9 @@ public class ObraController {
         return ResponseEntity.ok(obraService.registraObra(obraRequestDTO));
     }
 
-
+    @GetMapping
+    public ResponseEntity<ObraResponseDTO> buscarDadosObra (@RequestParam ("id") Long id){
+        return ResponseEntity.ok(obraService.buscarDadosObra(id));
+    }
 
 }
