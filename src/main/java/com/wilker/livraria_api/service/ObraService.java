@@ -11,6 +11,7 @@ import com.wilker.livraria_api.infrastructure.repository.AutorRepository;
 import com.wilker.livraria_api.infrastructure.repository.ObraRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -50,7 +51,7 @@ public class ObraService {
         return obraMapperConverter.paraObraResponseDTO(obraRepository.save(obraEntity));
     }
 
-    public ObraResponseDTO buscarDadosObra(Long id){
+    public ObraResponseDTO buscaObra(Long id){
         ObraEntity obraEntity = obraRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Nenhuma obra encontrada com o id: " + id));
 
@@ -58,5 +59,33 @@ public class ObraService {
 
     }
 
+    @Transactional
+    public ObraResponseDTO atualizaObra(ObraRequestDTO obraRequestDTO, Long id){
+        ObraEntity obraEntity = obraRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Nenhuma obra encontrada com o id: " + id));
+
+        obraMapperUpdate.updateObra(obraRequestDTO, obraEntity);
+
+        Set<Long> autoresIds = obraRequestDTO.autoresIds();
+
+        List<AutorEntity> autoresEncontrados = autorRepository.findAllById(autoresIds);
+
+        if(autoresIds.size() != autoresEncontrados.size()){
+
+            Set<Long> idsEncontrados = autoresEncontrados.stream()
+                    .map(AutorEntity::getId).collect(Collectors.toSet());
+
+            Set<Long> idsNaoEncontrados = new HashSet<>(autoresIds);
+
+            idsNaoEncontrados.removeAll(idsEncontrados);
+
+            throw new ResourceNotFoundException("Os seguintes autores não foram encontrados: " + idsNaoEncontrados);
+        }
+
+        obraEntity.setAutores(new HashSet<>(autoresEncontrados));
+
+        return obraMapperConverter.paraObraResponseDTO(obraRepository.save(obraEntity));
+
+    }
 
 }
