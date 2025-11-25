@@ -9,5 +9,5 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface AutorMapperUpdate {
 
-    void updateAutor(AutorRequestDTO autorRequestDTO, @MappingTarget AutorEntity autorEntity);
+    AutorEntity updateAutor(AutorRequestDTO autorRequestDTO, @MappingTarget AutorEntity autorEntity);
 }
