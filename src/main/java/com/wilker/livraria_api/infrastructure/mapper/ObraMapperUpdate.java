@@ -13,5 +13,5 @@ public interface ObraMapperUpdate {
 
    @Mapping(target = "id", ignore = true)
    @Mapping(target = "autores", ignore = true)
-   void updateObra(ObraRequestDTO obraRequestDTO, @MappingTarget ObraEntity obraEntity);
+   ObraEntity updateObra(ObraRequestDTO obraRequestDTO, @MappingTarget ObraEntity obraEntity);
 }
