@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 
-@Mapper(componentModel = "spring", uses = {ObraMapperConverter.class})
+@Mapper(componentModel = "spring")
 public interface AutorMapperConverter {
 
 

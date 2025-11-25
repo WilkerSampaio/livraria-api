@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -13,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Table(name = "obra")
 @Entity
+@Builder
 
 public class ObraEntity {
 
@@ -33,5 +34,18 @@ public class ObraEntity {
     @JoinTable(name = "autor_obra", joinColumns = @JoinColumn(name = "obra_id"),
             inverseJoinColumns = @JoinColumn(name = "autor_id"))
     private Set<AutorEntity> autores;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ObraEntity that = (ObraEntity) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
 }
