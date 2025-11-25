@@ -2,12 +2,10 @@ package com.wilker.livraria_api.infrastructure.entity;
 
 import com.wilker.livraria_api.infrastructure.enums.SexoEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -16,6 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "autor")
+@Builder
 
 public class AutorEntity {
 
@@ -45,6 +44,17 @@ public class AutorEntity {
     @ManyToMany(mappedBy = "autores")
     private Set<ObraEntity> obras;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AutorEntity that = (AutorEntity) o;
+        return id != null && Objects.equals(id, that.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 
 }

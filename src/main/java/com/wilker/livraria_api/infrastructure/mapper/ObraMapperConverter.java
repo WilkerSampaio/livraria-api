@@ -16,6 +16,7 @@ public interface ObraMapperConverter {
 
     // Mantido para mapear DTO de Request para Entity
     @Mapping(target = "id", ignore = true )
+    //autores é setado no service
     @Mapping(target = "autores", ignore = true)
     ObraEntity paraObraEntity(ObraRequestDTO obraRequestDTO);
 
