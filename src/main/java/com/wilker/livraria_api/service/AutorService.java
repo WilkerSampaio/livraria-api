@@ -17,16 +17,10 @@ public class AutorService {
     private final AutorRepository autorRepository;
     private final AutorMapperConverter autorMapperConverter;
     private final AutorMapperUpdate autorMapperUpdate;
+
     public AutorResponseDTO registraAutor(AutorRequestDTO autorRequestDTO){
 
-        AutorEntity autorEntity = new AutorEntity();
-
-        autorEntity.setNome(autorRequestDTO.nome());
-        autorEntity.setSexoEnum(autorRequestDTO.sexoEnum());
-        autorEntity.setEmail(autorRequestDTO.email());
-        autorEntity.setDataNascimento(autorRequestDTO.dataNascimento());
-        autorEntity.setPaisOrigem(autorRequestDTO.paisOrigem());
-        autorEntity.setCpf(autorRequestDTO.cpf());
+        AutorEntity autorEntity =  autorMapperConverter.paraAutorEntity(autorRequestDTO);
 
         return autorMapperConverter.paraAutorResponse(autorRepository.save(autorEntity));
     }
