@@ -1,4 +1,8 @@
-FROM ubuntu:latest
-LABEL authors="neoxe"
+FROM eclipse-temurin:17-jdk-alpine
 
-ENTRYPOINT ["top", "-b"]
+WORKDIR /app
+COPY build/libs/livraria-api-0.0.1-SNAPSHOT.jar /app/livraria-api.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "/app/livraria-api.jar"]
