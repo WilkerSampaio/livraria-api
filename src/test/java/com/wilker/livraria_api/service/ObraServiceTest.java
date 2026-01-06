@@ -100,14 +100,11 @@ class ObraServiceTest {
     @Test
     void deveRegistrarObraComSucesso() {
 
-        when(autorRepository.findAllById(autoresIds))
-                .thenReturn(List.of(autorEntity));
+        when(autorRepository.findAllById(autoresIds)).thenReturn(List.of(autorEntity));
 
-        when(obraRepository.save(any(ObraEntity.class)))
-                .thenReturn(obraEntity);
+        when(obraRepository.save(any(ObraEntity.class))).thenReturn(obraEntity);
 
-        when(obraMapperConverter.paraObraResponseDTO(obraEntity))
-                .thenReturn(obraResponseDTO);
+        when(obraMapperConverter.paraObraResponseDTO(obraEntity)).thenReturn(obraResponseDTO);
 
         ObraResponseDTO resposta = obraService.registraObra(obraRequestDTO);
 
